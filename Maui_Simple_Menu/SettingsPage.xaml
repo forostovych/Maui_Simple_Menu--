@@ -3,10 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Maui_Simple_Menu.SettingsPage"
              Title="SettingsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <Grid Padding="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="55"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout  Grid.Row="0" Padding="0" HorizontalOptions="Center" VerticalOptions="Center">
+
+            <Label x:Name="LBL_Text" Text="Settings Page" TextColor="White" FontSize="24"/>
+
+        </StackLayout>
+
+        <StackLayout Grid.Row="1" Padding="0">
+
+            <Border 
+                HorizontalOptions="Center" HeightRequest="70" WidthRequest="400" StrokeShape="RoundRectangle 30,30,0,0"
+                BackgroundColor="#161A1D" Padding="0" Stroke="Transparent">
+            </Border>
+
+            <Border 
+                x:Name="LAYOUT_Menu_Select" Margin="0,-100,0,0"
+                HorizontalOptions="Center" HeightRequest="90"
+                Background="Transparent" Padding="0" Stroke="Transparent">
+
+            </Border>
+
+        </StackLayout>
+
+    </Grid>
+    
 </ContentPage>

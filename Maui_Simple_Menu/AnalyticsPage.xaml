@@ -1,10 +1,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:contentViews="clr-namespace:CryptoBank.Views.ContentViews"
              x:Class="MAUI_Menu.Views.ContentPages.AnalyticsPage"
              Title="AnalyticsPage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="DarkGreen">
+             BackgroundColor="DeepPink">
 
     <Grid Padding="0">
         <Grid.RowDefinitions>
@@ -30,7 +29,6 @@
                 HorizontalOptions="Center" HeightRequest="90"
                 Background="Transparent" Padding="0" Stroke="Transparent">
 
-                <contentViews:OwnNavigationMenuView x:Name="ownNavigationMenuView" />
             </Border>
 
         </StackLayout>

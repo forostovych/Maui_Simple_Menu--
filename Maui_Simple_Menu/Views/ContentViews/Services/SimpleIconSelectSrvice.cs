@@ -6,18 +6,17 @@ namespace MAUI_Menu.Views.Services
     public class SimpleIconSelectSrvice
     {
         private static SimpleIconSelectSrvice instance = null;
-
         private CurrentIconModel currentIcons;
-        private MenuPageActive currentActiveIcon;
-
         public event Action CurrentIconChanged;
 
         private SimpleIconSelectSrvice()
         {
             currentIcons = new CurrentIconModel()
             {
-                WalletIcon = "wallet.svg",
+                WalletIcon = "yellowwallet.svg",
                 ExchangeIcon = "exchange.svg",
+                AnalitycIcon = "analitycs.svg",
+                SettingIcon = "settings.svg",
             };
         }
 
@@ -33,37 +32,49 @@ namespace MAUI_Menu.Views.Services
 
         public void SetActiveIcon(MenuPageActive activeIcon)
         {
-            currentActiveIcon = activeIcon;
             currentIcons = SetCurrentIcons(activeIcon);
             CurrentIconChanged?.Invoke();
         }
 
-        public CurrentIconModel GetActiveIcons()
-        {
-            return currentIcons;
-        }
+        public CurrentIconModel GetActiveIcons() => currentIcons;
 
         private CurrentIconModel SetCurrentIcons(MenuPageActive activeIcon)
         {
-            CurrentIconModel currentIcons = new CurrentIconModel();
-
             switch (activeIcon)
             {
                 case MenuPageActive.Wallet:
-                    currentIcons.WalletIcon = "yellowwallet.svg";
-                    currentIcons.ExchangeIcon = "exchange.svg";
-                    break;
-                case MenuPageActive.Analityc: 
-                case MenuPageActive.Settings:
-                    currentIcons.WalletIcon = "wallet.svg";
-                    currentIcons.ExchangeIcon = "exchange.svg";
-                    break;
+                    {
+                        currentIcons.WalletIcon = "yellowwallet.svg";
+                        currentIcons.AnalitycIcon = "analitycs.svg";
+                        currentIcons.ExchangeIcon = "exchange.svg";
+                        currentIcons.SettingIcon = "settings.svg";
+                        break;
+                    }
+                case MenuPageActive.Analityc:
+                    {
+                        currentIcons.WalletIcon = "wallet.svg";
+                        currentIcons.AnalitycIcon = "yellowanalitycs.svg";
+                        currentIcons.ExchangeIcon = "exchange.svg";
+                        currentIcons.SettingIcon = "settings.svg";
+                        break;
+                    }
                 case MenuPageActive.Exchange:
-                    currentIcons.WalletIcon = "wallet.svg";
-                    currentIcons.ExchangeIcon = "yellowexchange.svg";
-                    break;
+                    {
+                        currentIcons.WalletIcon = "wallet.svg";
+                        currentIcons.AnalitycIcon = "analitycs.svg";
+                        currentIcons.ExchangeIcon = "yellowexchange.svg";
+                        currentIcons.SettingIcon = "settings.svg";
+                        break;
+                    }
+                case MenuPageActive.Settings:
+                    {
+                        currentIcons.WalletIcon = "wallet.svg";
+                        currentIcons.AnalitycIcon = "analitycs.svg";
+                        currentIcons.ExchangeIcon = "exchange.png";
+                        currentIcons.SettingIcon = "yellowsettings.svg";
+                        break;
+                    }
             }
-
             return currentIcons;
         }
     }

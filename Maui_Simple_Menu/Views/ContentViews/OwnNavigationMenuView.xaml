@@ -77,12 +77,12 @@
 
                     <Image Source="bigframebutton.png"  HeightRequest="60"/>
                     <Button 
-                        x:Name="BTN_Settings"
+                        x:Name="BTN_Settings" Clicked="BTN_Settings_Clicked"
                         BorderColor="Transparent" BackgroundColor="Transparent"
                         Text="" HeightRequest="40" WidthRequest="40" CornerRadius="25" Margin="-9,-55,0,2"/>
 
                     <StackLayout Margin="5,5,0,0">
-                        <Image x:Name="IMG_Properties" Source="settings.svg" Margin="-15,-35,0,20" HeightRequest="17"/>
+                        <Image x:Name="IMG_Properties" Source="{Binding CurrentIconModel.SettingIcon}" Margin="-15,-35,0,20" HeightRequest="17"/>
                     </StackLayout>
 
                     <Frame BackgroundColor="Transparent" WidthRequest="100" Padding="0" BorderColor="Transparent" Margin="0,0,0,0">

@@ -4,7 +4,7 @@
              x:Class="Maui_Simple_Menu.Exchange"
              Title="Exchange"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="DarkGreen">
+             BackgroundColor="DarkBlue">
     
     
     <Grid Padding="0">
@@ -15,7 +15,7 @@
 
         <StackLayout  Grid.Row="0" Padding="0" HorizontalOptions="Center" VerticalOptions="Center">
 
-            <Label x:Name="LBL_Text" Text="Exchange" TextColor="White" FontSize="24"/>
+            <Label x:Name="LBL_Text" Text="Exchang Page" TextColor="White" FontSize="24"/>
 
         </StackLayout>
 

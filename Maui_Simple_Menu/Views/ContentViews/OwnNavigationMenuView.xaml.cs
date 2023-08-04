@@ -3,6 +3,7 @@ using MAUI_Menu.Views.Services;
 using Maui_Simple_Menu;
 using System.ComponentModel;
 using Microsoft.Maui.Controls;
+using MAUI_Menu.Views.ContentPages;
 
 namespace CryptoBank.Views.ContentViews
 {
@@ -56,7 +57,14 @@ namespace CryptoBank.Views.ContentViews
 
         private async void BTN_Analytics_Clicked(object sender, EventArgs e)
         {
-            // Here you can change the page based on your requirements
+            await Navigation.PushModalAsync(new AnalyticsPage(), false);
+            service.SetActiveIcon(MenuPageActive.Analityc);
+        }
+
+        private async void BTN_Settings_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new SettingsPage(), false);
+            service.SetActiveIcon(MenuPageActive.Settings);
         }
     }
 }
