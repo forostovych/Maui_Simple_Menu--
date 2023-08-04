@@ -2,7 +2,6 @@ using MAUI_Menu.Views.Models;
 using MAUI_Menu.Views.Services;
 using Maui_Simple_Menu;
 using System.ComponentModel;
-using Microsoft.Maui.Controls;
 using MAUI_Menu.Views.ContentPages;
 
 namespace CryptoBank.Views.ContentViews
