@@ -6,20 +6,16 @@ namespace CryptoBank.Views.ContentViews
 {
     public class OwnMenuPageFactory
     {
-        private static SimpleIconSelectSrvice simpleIconSelectSrvice = new SimpleIconSelectSrvice();
         public OwnMenuPageFactory() 
         {
-            simpleIconSelectSrvice = new SimpleIconSelectSrvice();
         }
 
         public static ContentPage GetWalletPage()
         {
-            simpleIconSelectSrvice.SetActiveIcon(MenuPageActive.Wallet);
             return new MainPage();
         }
         public static ContentPage GetExchangePage()
         {
-            simpleIconSelectSrvice.SetActiveIcon(MenuPageActive.Exchange);
             return new Exchange();
         }
 

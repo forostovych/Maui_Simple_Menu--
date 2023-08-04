@@ -1,67 +1,70 @@
 ﻿using MAUI_Menu.Views.Models;
+using System;
 
 namespace MAUI_Menu.Views.Services
 {
     public class SimpleIconSelectSrvice
     {
-        public event Action CurrentIconChanged;
-        private static MenuPageActive currentActiveIcon { get; set; }
-        private static CurrentIconModel currrentIcons { get; set; } = new CurrentIconModel();
+        private static SimpleIconSelectSrvice instance = null;
 
-        public SimpleIconSelectSrvice()
+        private CurrentIconModel currentIcons;
+        private MenuPageActive currentActiveIcon;
+
+        public event Action CurrentIconChanged;
+
+        private SimpleIconSelectSrvice()
         {
-            currrentIcons = new CurrentIconModel()
+            currentIcons = new CurrentIconModel()
             {
                 WalletIcon = "wallet.svg",
-                AnalitycIcon = "analitycs.svg",
                 ExchangeIcon = "exchange.svg",
             };
         }
+
+        public static SimpleIconSelectSrvice GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new SimpleIconSelectSrvice();
+            }
+
+            return instance;
+        }
+
         public void SetActiveIcon(MenuPageActive activeIcon)
         {
             currentActiveIcon = activeIcon;
-            currrentIcons = SetCurrentIcons(activeIcon);
-            CurrentIconChanged?.Invoke(); // Notify listeners that the active icon has changed
+            currentIcons = SetCurrentIcons(activeIcon);
+            CurrentIconChanged?.Invoke();
         }
+
         public CurrentIconModel GetActiveIcons()
         {
-            return currrentIcons;
+            return currentIcons;
         }
+
         private CurrentIconModel SetCurrentIcons(MenuPageActive activeIcon)
         {
-            CurrentIconModel currrentIcons = new CurrentIconModel();
+            CurrentIconModel currentIcons = new CurrentIconModel();
+
             switch (activeIcon)
             {
                 case MenuPageActive.Wallet:
-                {
-                    currrentIcons.WalletIcon = "wallet.svg";
-                    currrentIcons.AnalitycIcon = "analitycs.svg";
-                    currrentIcons.ExchangeIcon = "exchange.svg";
+                    currentIcons.WalletIcon = "yellowwallet.svg";
+                    currentIcons.ExchangeIcon = "exchange.svg";
                     break;
-                }
                 case MenuPageActive.Analityc:
-                {
-                    currrentIcons.WalletIcon = "wallet.svg";
-                    currrentIcons.AnalitycIcon = "yellowanalitycs.svg";
-                    currrentIcons.ExchangeIcon = "exchange.svg";
-                    break;
-                }
-                case MenuPageActive.Exchange:
-                {
-                    currrentIcons.WalletIcon = "wallet.svg";
-                    currrentIcons.AnalitycIcon = "analitycs.svg";
-                    currrentIcons.ExchangeIcon = "yellowexchange.svg";
-                    break;
-                }
                 case MenuPageActive.Settings:
-                {
-                    currrentIcons.WalletIcon = "wallet.svg";
-                    currrentIcons.AnalitycIcon = "analitycs.svg";
-                    currrentIcons.ExchangeIcon = "exchange.svg";
+                    currentIcons.WalletIcon = "wallet.svg";
+                    currentIcons.ExchangeIcon = "exchange.svg";
                     break;
-                }
+                case MenuPageActive.Exchange:
+                    currentIcons.WalletIcon = "wallet.svg";
+                    currentIcons.ExchangeIcon = "yellowexchange.svg";
+                    break;
             }
-            return currrentIcons;
+
+            return currentIcons;
         }
     }
 }

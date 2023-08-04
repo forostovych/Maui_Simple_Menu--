@@ -2,12 +2,13 @@ using MAUI_Menu.Views.Models;
 using MAUI_Menu.Views.Services;
 using Maui_Simple_Menu;
 using System.ComponentModel;
+using Microsoft.Maui.Controls;
 
 namespace CryptoBank.Views.ContentViews
 {
     public partial class OwnNavigationMenuView : ContentView, INotifyPropertyChanged
     {
-        private SimpleIconSelectSrvice _simpleIconSelectSrvice;
+        SimpleIconSelectSrvice service;
         private CurrentIconModel _currentIconModel;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -29,30 +30,28 @@ namespace CryptoBank.Views.ContentViews
         {
             InitializeComponent();
 
-            _simpleIconSelectSrvice = new SimpleIconSelectSrvice();
-            _simpleIconSelectSrvice.CurrentIconChanged += UpdateIcons;
+            service = SimpleIconSelectSrvice.GetInstance();
+            service.CurrentIconChanged += UpdateIcons;
             UpdateIcons();
             BindingContext = this;
         }
 
         private void UpdateIcons()
         {
-            CurrentIconModel = _simpleIconSelectSrvice.GetActiveIcons();
+            CurrentIconModel = service.GetActiveIcons();
         }
 
         private async void BTN_Wallet_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new MainPage(), true);
-            await Task.Delay(1000);
-            _simpleIconSelectSrvice.SetActiveIcon(MenuPageActive.Wallet);
+            service.SetActiveIcon(MenuPageActive.Wallet);
         }
 
 
         private async void BTN_Exchange3_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new Exchange(), true);
-            await Task.Delay(1000);
-            _simpleIconSelectSrvice.SetActiveIcon(MenuPageActive.Exchange);
+            service.SetActiveIcon(MenuPageActive.Exchange);
         }
 
         private async void BTN_Analytics_Clicked(object sender, EventArgs e)

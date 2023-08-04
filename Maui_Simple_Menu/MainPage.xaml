@@ -2,9 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:contentViews="clr-namespace:CryptoBank.Views.ContentViews"
+             xmlns:contentViews2="clr-namespace:MAUI_Menu.Views.Services"
+             
              x:Class="Maui_Simple_Menu.MainPage"             
              Shell.NavBarIsVisible="False"
              BackgroundColor="DarkGreen">
+
+
 
     <Grid Padding="0">
         <Grid.RowDefinitions>

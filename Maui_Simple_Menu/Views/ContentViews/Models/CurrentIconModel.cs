@@ -7,7 +7,6 @@ public class CurrentIconModel : INotifyPropertyChanged
 
     private string _walletIcon = "wallet.svg";
     private string _exchangeIcon = "exchange.svg";
-    private string _analitycIcon = "analitycs.svg";
 
     public string WalletIcon
     {
@@ -33,18 +32,7 @@ public class CurrentIconModel : INotifyPropertyChanged
             }
         }
     }
-    public string AnalitycIcon
-    {
-        get => _analitycIcon;
-        set
-        {
-            if (_analitycIcon != value)
-            {
-                _analitycIcon = value;
-                OnPropertyChanged(nameof(AnalitycIcon));
-            }
-        }
-    }
+
 
     protected virtual void OnPropertyChanged(string propertyName)
     {
