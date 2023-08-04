@@ -53,7 +53,7 @@ namespace MAUI_Menu.Views.Services
                     currentIcons.WalletIcon = "yellowwallet.svg";
                     currentIcons.ExchangeIcon = "exchange.svg";
                     break;
-                case MenuPageActive.Analityc:
+                case MenuPageActive.Analityc: 
                 case MenuPageActive.Settings:
                     currentIcons.WalletIcon = "wallet.svg";
                     currentIcons.ExchangeIcon = "exchange.svg";

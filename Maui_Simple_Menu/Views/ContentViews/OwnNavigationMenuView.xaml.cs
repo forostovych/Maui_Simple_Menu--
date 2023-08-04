@@ -43,14 +43,14 @@ namespace CryptoBank.Views.ContentViews
 
         private async void BTN_Wallet_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new MainPage(), true);
+            await Navigation.PushModalAsync(new MainPage(), false);
             service.SetActiveIcon(MenuPageActive.Wallet);
         }
 
 
         private async void BTN_Exchange3_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new Exchange(), true);
+            await Navigation.PushModalAsync(new Exchange(), false);
             service.SetActiveIcon(MenuPageActive.Exchange);
         }
 
