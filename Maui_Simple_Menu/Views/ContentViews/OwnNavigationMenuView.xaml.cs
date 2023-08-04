@@ -8,7 +8,7 @@ namespace CryptoBank.Views.ContentViews
 {
     public partial class OwnNavigationMenuView : ContentView, INotifyPropertyChanged
     {
-        SimpleIconSelectSrvice service;
+        SimpleIconSelectService service;
         private CurrentIconModel _currentIconModel;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -30,7 +30,7 @@ namespace CryptoBank.Views.ContentViews
         {
             InitializeComponent();
 
-            service = SimpleIconSelectSrvice.GetInstance();
+            service = SimpleIconSelectService.GetInstance();
             service.CurrentIconChanged += UpdateIcons;
             UpdateIcons();
             BindingContext = this;

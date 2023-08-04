@@ -1,29 +1,33 @@
 ﻿using MAUI_Menu.Views.Models;
+using System.Collections.Generic;
 
 namespace MAUI_Menu.Views.Services
 {
-    public class SimpleIconSelectSrvice
+    public class SimpleIconSelectService
     {
-        private static SimpleIconSelectSrvice instance = null;
+        private static SimpleIconSelectService instance = null;
         private CurrentIconModel currentIcons;
         public event Action CurrentIconChanged;
 
-        private SimpleIconSelectSrvice()
+        private Dictionary<MenuPageActive, CurrentIconModel> iconDictionary;
+
+        private SimpleIconSelectService()
         {
-            currentIcons = new CurrentIconModel()
+            iconDictionary = new Dictionary<MenuPageActive, CurrentIconModel>()
             {
-                WalletIcon = "yellowwallet.svg",
-                ExchangeIcon = "exchange.svg",
-                AnalitycIcon = "analitycs.svg",
-                SettingIcon = "settings.svg",
+                { MenuPageActive.Wallet, new CurrentIconModel { WalletIcon = "yellowwallet.svg", ExchangeIcon = "exchange.svg", AnalitycIcon = "analitycs.svg", SettingIcon = "settings.svg" } },
+                { MenuPageActive.Analityc, new CurrentIconModel { WalletIcon = "wallet.svg", ExchangeIcon = "exchange.svg", AnalitycIcon = "yellowanalitycs.svg", SettingIcon = "settings.svg" } },
+                { MenuPageActive.Exchange, new CurrentIconModel { WalletIcon = "wallet.svg", ExchangeIcon = "yellowexchange.svg", AnalitycIcon = "analitycs.svg", SettingIcon = "settings.svg" } },
+                { MenuPageActive.Settings, new CurrentIconModel { WalletIcon = "wallet.svg", ExchangeIcon = "exchange.svg", AnalitycIcon = "analitycs.svg", SettingIcon = "yellowsettings.svg" } }
             };
+            SetActiveIcon(MenuPageActive.Wallet);
         }
 
-        public static SimpleIconSelectSrvice GetInstance()
+        public static SimpleIconSelectService GetInstance()
         {
             if (instance == null)
             {
-                instance = new SimpleIconSelectSrvice();
+                instance = new SimpleIconSelectService();
             }
 
             return instance;
@@ -31,50 +35,10 @@ namespace MAUI_Menu.Views.Services
 
         public void SetActiveIcon(MenuPageActive activeIcon)
         {
-            currentIcons = SetCurrentIcons(activeIcon);
+            currentIcons = iconDictionary[activeIcon];
             CurrentIconChanged?.Invoke();
         }
 
         public CurrentIconModel GetActiveIcons() => currentIcons;
-
-        private CurrentIconModel SetCurrentIcons(MenuPageActive activeIcon)
-        {
-            switch (activeIcon)
-            {
-                case MenuPageActive.Wallet:
-                    {
-                        currentIcons.WalletIcon = "yellowwallet.svg";
-                        currentIcons.AnalitycIcon = "analitycs.svg";
-                        currentIcons.ExchangeIcon = "exchange.svg";
-                        currentIcons.SettingIcon = "settings.svg";
-                        break;
-                    }
-                case MenuPageActive.Analityc:
-                    {
-                        currentIcons.WalletIcon = "wallet.svg";
-                        currentIcons.AnalitycIcon = "yellowanalitycs.svg";
-                        currentIcons.ExchangeIcon = "exchange.svg";
-                        currentIcons.SettingIcon = "settings.svg";
-                        break;
-                    }
-                case MenuPageActive.Exchange:
-                    {
-                        currentIcons.WalletIcon = "wallet.svg";
-                        currentIcons.AnalitycIcon = "analitycs.svg";
-                        currentIcons.ExchangeIcon = "yellowexchange.svg";
-                        currentIcons.SettingIcon = "settings.svg";
-                        break;
-                    }
-                case MenuPageActive.Settings:
-                    {
-                        currentIcons.WalletIcon = "wallet.svg";
-                        currentIcons.AnalitycIcon = "analitycs.svg";
-                        currentIcons.ExchangeIcon = "exchange.png";
-                        currentIcons.SettingIcon = "yellowsettings.svg";
-                        break;
-                    }
-            }
-            return currentIcons;
-        }
     }
 }
