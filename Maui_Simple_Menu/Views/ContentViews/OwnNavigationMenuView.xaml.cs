@@ -47,6 +47,7 @@ namespace CryptoBank.Views.ContentViews
             _simpleIconSelectSrvice.SetActiveIcon(MenuPageActive.Wallet);
         }
 
+
         private async void BTN_Exchange3_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new Exchange(), true);
